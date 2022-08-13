@@ -201,5 +201,5 @@ app.post('/newsletter',(req,res)=>{
 const port = process.env.PORT || 8000;
 
 app.listen(port, ()=>{
-    console.log(`Server is running at port 5500. Open your project at: \n\tLocal: http://localhost:5500/ `);
+    console.log(`Server is running`);
 });

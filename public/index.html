@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- font-family: 'Noto Sans JP', sans-serif; -->
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link rel="shortcut icon" href="./logos/logo.png" type="image/x-icon">
+
+  <title>HOME | Mobile Store</title>
+</head>
+
+<body>
+  <header id="header" class="hero">
+
+    <img class="" src="" alt="" id="header-img">
+
+    <div class="container spacing">
+      <h1 class="primary-title animate__animated animate__flipInY">Mobile Store</h1>
+      <p class="animate__animated animate__flipInX">Latest Smartphones and mobile accessories</p>
+      <a href="#featured" class="btn animate__animated animate__rotateInUpLeft animate__delay-1s">See what we have</a>
+    </div>
+
+  </header>
+
+  <main>
+
+    <nav id="nav-bar">
+      <a href="#featured" id="overview" class="nav-link">Overview</a>
+      <a class="nav-link show-mobiles" id="mobileLink" style="cursor: pointer;">Mobiles</a>
+      <a class="nav-link" id="other-accessories" style="cursor: pointer;">Other Accessories</a>
+      <a type="button" class="my-orders-btn" ><i class="fa-solid fa-cart-arrow-down"></i> My Orders</a>
+      <a type="button" id="reg-btn" ><i class="fa-solid fa-envelope"></i> Contact us</a>
+    </nav>
+<!-- My orders -->
+  <div class="my-orders-container">
+    <div class="myorders-top">
+      <h1 class="myorders-h1">MY ORDERS</h1>
+      <i class="fa-solid fa-xmark" id="close-myorders"></i>
+    </div>
+
+    <div class="myorders-table">
+      <table>
+        <thead class="myorders-headings">
+          <th>PRODUCTS</th>
+          <th>PRICE</th>
+          <th>QTY</th>
+          <th>TOTAL</th>
+          <th>CANCEL ORDER</th>
+        </thead>
+        <tbody class="myorders-body">
+          <!-- <tr class="table-row">
+            <td class="myorder-title"><img src="https://via.placeholder.com/50" style="display: inline;" alt=""><p style="display: inline;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. fdgfdhgdhgddgfdhdg</p></td>
+            <td class="myorder-price">£59.99</td>
+            <td class="qty"><input type="number" name="" id="" disabled value="3"></td>
+            <td class="myorder-total">£182.95</td>
+            <td><i class="fa-solid fa-trash-can"></i></td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+<!-- My orders ends here -->
+
+<!-- Order Canceled -->
+<div class="order-canceled">
+  <p>Order Canceled</p><i class="fa-solid fa-ban"></i>
+</div>
+<!----->
+
+<!-- Contact us form starts -->
+    <div class="contact-us">
+      <i class="fa-solid fa-xmark close-contact"></i>
+      <form action="/contact" method="post" id="cont-form">
+        <h1  class="contact-h1">Contact us</h1>
+        <div>
+            <input type="text" name="name" placeholder="Your name" autocomplete="off">
+        </div>
+        <div>
+            <input type="text" name="subject" placeholder="Subject" autocomplete="off">
+        </div>
+        <div>
+            <input type="email" name="email" placeholder="Email" autocomplete="off">
+        </div>
+        <div>
+          <label for="name">
+            <textarea name="message" placeholder="Type your message" cols="30" rows="10"></textarea>
+          </label>
+        </div>
+        <input type="submit" name="submit" id="submit-ms" value="Send message">
+      </form>
+    </div>
+<!-- Contact us form ends here -->
+
+<!-- main section -->
+<div id="main-sec">
+
+</div>
+
+    <div id="home-sec">
+<!-- Featured products starts -->
+    <section id="featured" class="featured">
+      <div class="container">
+        <h2 class="section-title" >Featured Products</h2>
+        <div class="split">
+          <a class="featured_item" onclick="showFeaturedContainer(event)">
+            <img src="wireless charger.png" alt="" class="featured_img">
+            <p class="featured_details"><span>Rs. 5999 </span> Wireless charger</p>
+          </a>
+          <a class="featured_item" onclick="showFeaturedContainer(event)">
+            <img src="./Mobiles/812yohjGZ2L._SY741_-removebg-preview (1).png" alt="" class="featured_img">
+            <p class="featured_details"><span> Rs. 39999 </span> Galaxy S20 FE</p>
+          </a>
+          <a  class="featured_item" onclick="showFeaturedContainer(event)">
+            <img src="./Mobiles/m3.png" alt="" class="featured_img">
+            <p class="featured_details"><span>Rs. 7500 </span> Redmi 9A</p>
+          </a>
+        </div>
+      </div>
+    </section>
+<!-- Featured products ends here-->
+
+<!-- Products section starts -->
+    <section id="products" class="our-products">
+      <div class="container">
+        <h2 class="section-title">Our Products</h2>
+        <article class="product rproduct1 spacing" data-aos="fade-right">
+          <img src="Mobiles/m1.png" alt="" class="product_image">
+          <h3 class="product_title">OnePlus Nord CE 2 5G (Bahamas Blue, 6GB RAM, 128GB Storage)</h3>
+          <p class="product_description"><ul style="display: flex; flex-wrap: wrap; gap: 28px; color: #1b1b1b;"><li>4500mAh battery to a day's power in 15 minutes</li>
+          <li>6.43 inch, 90Hz FHD+ AMOLED Display</li>
+          <li>Memory Storage Capacity: 128 GB</li>
+          <li>6GB RAM</li></ul></p>
+          
+          <a class="btn btn-purchase" onclick="showContainer(event)">Purchase</a>
+          <span class="product-price">Rs. 15999</span>
+        </article>
+        <article class="product rproduct2 spacing" data-aos="fade-right">
+          <img src="Mobiles/m2.png" alt="" class="product_image">
+          <h3 class="product_title" name="title">Realme narzo 50A </h3>
+          <p class="product_description">Flash Black, 4GB RAM + 128GB Storage, Helio G85 Processor, FHD+ Display | 50MP AI Triple Camera (Charger to be Bought Separately) <br>
+          operating system: Android 11.0, 1 Year manufacturer warranty for handset & 6 months for accessories</p>
+          <a class="btn btn-purchase" onclick="showContainer(event)">Purchase</a>
+          <span class="product-price">Rs. 16000</span>
+        </article>
+        <article class="product rproduct3 spacing" style="margin-bottom: -50px;" data-aos="fade-right">
+          <img src="Mobiles/m3.png" alt="" class="product_image">
+          <h3 class="product_title">Redmi 9A Sport (Coral Green, 2GB RAM, 32GB Storage) | 2GHz Octa-core processor</h3>
+          <p class="product_description">Processor: MediaTek Helio G25 Octa-core; Up to 2.0GHz clock speed <br>
+            Battery: 5000 mAH large battery with 10W wired charger in-box <br>
+            Display: 16.58 centimeters (6.53-inch) HD+ display with 720x1600 pixels and 20:9 aspect ratio
+          </p>
+          <a class="btn btn-purchase" onclick="showContainer(event)">Purchase</a>
+          <span class="product-price">Rs. 7500</span>
+        </article>
+      </div>
+    </section>
+<!-- Products section ends here -->
+    </div>
+    <div onclick="showmore()" id="more-pd-btn" class="show-mobiles">
+      <a href="#products" class="btn-flip" data-back="Products" data-front="More"></a>
+    </div>
+
+<!-- Product buy form starts -->
+    <div class="buy-container">
+      <div class="buy">
+        <div class="quantity">
+          <i class="fa-solid fa-xmark close-buy"></i>
+          Select Quantity
+        </div>
+        <form action='/buy' method="post" >
+
+        <div class="inputs">
+          <input type="text" id="image-input" name="image">
+          <input type="text" id="price-input" name="price">
+          <div class="buy-input-div title-text-input">
+            <box-icon name='user' class="title-text-input"></box-icon>
+            <input type="text" class="buy-input title-text-input" name="title" id="title-text"></div>
+          <div class="buy-input-div" >
+            <box-icon name='user'></box-icon>
+            <input type="text" class="buy-input" placeholder="Full Name" name="fullname" id="person-name"></div>
+          <div class="buy-input-div">
+            <box-icon name='phone'></box-icon>
+            <input type="number" class="buy-input" placeholder="Phone Number" name="phone" id="phone"></div>
+          <div class="buy-input-div">
+            <box-icon name='envelope'></box-icon>
+            <input type="text" class="buy-input" placeholder="Email" name="email" id=""></div>
+          <div class="buy-input-div">
+            <box-icon name='building'></box-icon>
+            <input type="text" class="buy-input" placeholder="Address" name="address" id=""></div>
+          <div class="buy-input-div">
+            <box-icon name='plus'></box-icon>
+            <input type="number" class="buy-input" placeholder="Quantity" name="quantity" id="">
+          </div>
+          <div class="buy-input-div">
+            <box-icon name='wallet-alt'></box-icon>
+            <input type="text" class="buy-input" Value="Payment Method : COD" name="quantity" disabled>
+          </div>
+          <button class="buy-btn">Buy</button>
+        </div>
+      </form>
+      </div>
+    </div>
+    <!-- Product buy form ends -->
+
+    <!-- Buy success message starts-->
+      <div class="buy-success">
+        <div class="success-tick">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <span class="success-msg">SUCCESS</span>
+        <span class="sub-msg">Your Product will be delivered</span>
+      </div>
+      <!-- Buy success message ends-->
+
+      <!-- Email notify message -->
+      <div class="notify-msg">
+        <div class="success-notify">
+          <i class="fa-solid fa-envelope-circle-check"></i>
+        </div>
+        <span class="success-msg">SUCCESS</span>
+        <span class="sub-msg">Your will be notified</span>
+      </div>
+      <!-- Email notify message ends -->
+
+      <!-- Notify me section -->
+    <div class="notify-me">
+      <div id="register">
+        <form action="/newsletter" method="post">
+        <h2 id="newsletter">Get Notified For Our New Products</h2><br>
+        <input type="email" class="notify-btn" name="email" placeholder="Enter your email address" id="email">
+        <input type="submit" class="submit-btn" id="notify-me" id="submit" value="Notify me!">
+      </form>
+      </div>
+    </div>
+    <!-- Notify me section ends -->
+
+    <!-- mobile section -->
+    <div class="mobiles">
+      
+    </div>
+  </main>
+  <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+  <script src="script.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</body>
+
+</html>

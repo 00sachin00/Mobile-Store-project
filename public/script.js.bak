@@ -1,0 +1,302 @@
+
+//...//
+const purchaseBtn = document.querySelectorAll('.btn-purchase');
+const buyContainer = document.querySelector('.buy-container');
+const closeBuy = document.querySelector('.close-buy');
+const successMsg = document.querySelector('.buy-success');
+const inputs = document.querySelectorAll('.buy-input');
+const buyBtn = document.querySelector('.buy-btn');
+const featuredItem = document.querySelectorAll('.featured_item');
+const notifyMe = document.getElementById('notify-me');
+const notifyMsg = document.querySelector('.notify-msg');
+const inputArr = [];
+
+function hideNotify(){
+    notifyMsg.style.display = 'none';
+}
+notifyMe.addEventListener('click', ()=>{
+    notifyMsg.style.display = 'flex';
+    setTimeout(hideNotify, 3000)
+})
+
+function hideSuccessMsg(){
+    successMsg.style.display = "none";
+}
+function showSuccess(){
+    inputs.forEach((inp)=>{
+        if(inp.value.length>0){
+            inputArr.push(inp.value);
+        }
+    });
+    if(inputArr.length>=5){
+        successMsg.style.display = "flex";
+        buyContainer.style.display = 'none';
+        setTimeout(hideSuccessMsg, 3000);
+    }
+    else{
+        alert("Please fill all your details");
+    }
+}
+
+buyBtn.addEventListener('click', showSuccess);
+
+/*contact us*/
+
+const contactBtn = document.getElementById('reg-btn');
+const contactUs = document.querySelector('.contact-us');
+const contactClose = document.querySelector('.close-contact');
+
+contactBtn.addEventListener('click',()=>{
+    contactUs.classList.toggle('active');
+    contactUs.style.transition = 'all 200ms linear';
+    contactUs.style.transform = 'scale(0.1)';
+    setTimeout(()=>{
+        contactUs.style.transform = 'scale(1)'
+    }, 1);
+});
+
+contactClose.addEventListener('click',()=>{
+    contactUs.style.transform = 'scale(0.1)';
+    setTimeout(()=>{
+        contactUs.classList.remove('active')
+    }, 200);
+})
+
+//MakingTabs:
+//Show Mobile Section
+const mobiles = document.querySelector('.mobiles');
+const showMobiles = document.getElementById("mobileLink");
+const mainSection = document.getElementById('main-sec');
+
+const products = document.getElementById('products');
+const productsDiv = document.createElement('div');
+productsDiv.appendChild(products);
+
+const moreBtn = document.getElementById('more-pd-btn');
+moreBtn.style.display = 'none';
+mobiles.innerHTML = productsDiv.innerHTML;
+
+//Adding content to mobile Section
+const moreMobiles = document.createElement('div');
+const pContainer = document.createElement('div');
+pContainer.setAttribute('class','container');
+pContainer.appendChild(moreMobiles);
+
+function showmore(){
+    mobiles.style.display = 'block';
+    mobiles.appendChild(pContainer);
+    const div = document.createElement('section');
+    div.appendChild(mobiles);
+    mainSection.innerHTML = div.innerHTML;
+    moreBtn.style.display = 'none';
+    
+}
+showMobiles.addEventListener('click', ()=>{
+    showmore();
+});
+
+//Show Homepage
+const homepage = document.getElementById('home-sec');
+const homebtn = document.getElementById('overview');
+//By default on pageload
+    homepage.style.display = 'block';
+        let homeDiv = document.createElement('div');
+        homeDiv.appendChild(homepage);
+        mainSection.innerHTML = homeDiv.innerHTML;
+        mainSection.append(productsDiv)
+        moreBtn.style.display = 'block';
+
+homebtn.addEventListener('click', ()=>{
+    homepage.style.display = 'block';
+    let homeDiv = document.createElement('div');
+    homeDiv.appendChild(homepage);
+    mainSection.innerHTML = homeDiv.innerHTML;
+    mainSection.append(productsDiv)
+    moreBtn.style.display = 'block';
+   
+})
+
+
+//My Orders
+const closeMyOrders = document.getElementById('close-myorders');
+const openMyOrders = document.querySelector('.my-orders-btn');
+const myOrdersBox = document.querySelector('.my-orders-container');
+
+openMyOrders.addEventListener('click', ()=>{
+    myOrdersBox.style.display = 'block';
+    myOrdersBox.style.transform = 'scale(0.1)';
+    myOrdersBox.style.transition = 'all 100ms linear';
+    setTimeout(()=>{
+        myOrdersBox.style.transform = 'scale(1)'
+    }, 1);
+});
+closeMyOrders.addEventListener('click', ()=>{
+    myOrdersBox.style.transform = 'scale(0.1)'
+    setTimeout(()=>{
+        myOrdersBox.style.display = 'none';
+    }, 100);
+});
+
+
+//Getting Orders Data from MySQL and displaying in MyOrders
+
+async function MyOrdersData(){
+
+    let response = await fetch('/getorders');
+    response.json().then(data=> {
+        for(let i = 0; i<data.length; i++){
+            console.log(Number(data[i].price))
+            const tbody = document.querySelector('.myorders-body');
+            const tr = document.createElement('tr');
+            tr.setAttribute('class', 'table-row');
+            tr.setAttribute('id',`${data[i].id}`)
+            tr.innerHTML = `<td>
+            <span class="myorder-title"><img src="${data[i].image}" style="display: inline;" alt=""><p style="display: inline; text-align:center; margin:auto;">${data[i].product_name}</p></span>
+            </td>
+            <td class="myorder-price" "><span></span>${data[i].price}</td>
+            <td class="qty"><input type="number" name="" id="" disabled value="${data[i].quantity}"></td>
+            <td class="myorder-total" >Rs ${parseFloat(data[i].price.match(/(\d+)/))*parseInt(data[i].quantity)}</td>
+            <td class="cancel-order" title='Cancel Order'><i onClick="deleteOrder(event)" class="fa-solid fa-trash-can"></i></td>`;
+            tbody.appendChild(tr);
+        }})
+}
+MyOrdersData()
+//Deleting Order from My Orders
+async function deleteOrder(e){
+    let cancelNotif = document.querySelector('.order-canceled');
+    cancelNotif.style.transition = 'all 700ms ease-in-out';
+    cancelNotif.style.transform = "translateX(0)";
+
+    setTimeout(()=>{
+        cancelNotif.style.transform = "translateX(350px)";
+    }, 2000);
+
+    let id = e.currentTarget.parentElement.parentElement.id;
+    e.currentTarget.parentElement.parentElement.remove();
+    const formData = {id: id}
+
+       
+    const fetchh = await fetch('/deleteorder', {
+        method: 'Post', // Method itself
+        mode: 'cors',
+        headers: {
+         'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+        },
+        body: JSON.stringify(formData)
+       });
+
+}
+//Getting Products Data from MySQL and displaying in Products
+async function getProducts(){
+    let response = await fetch('/getproduct');
+    response.json().then((data)=>{
+        for(let i = 0; i<data.length;i++){
+            let innerColor = `rgb(${Math.random()*255}, ${Math.random()*255},${Math.random()*255})`;
+            let div = document.createElement('article');
+            div.setAttribute('class', 'product rproduct4 spacing');
+            div.setAttribute('style', `background: radial-gradient(${innerColor},rgb(${Math.random()*255}, ${Math.random()*255},${Math.random()*255}))`);
+        
+            div.innerHTML = `<img src="${data[i].product_image}" alt="" class="product_image">
+            <h3 class="product_title">${data[i].product_name}</h3>
+            <p class="product_description">${data[i].description}</p>
+            <a class="btn btn-purchase" onclick="showContainer(event)" style='background-color:${innerColor};'>Purchase</a>
+            <span class="product-price">Rs ${data[i].price}</span>`;
+            moreMobiles.appendChild(div);
+        }
+    })
+}
+getProducts()
+async function getOtherProducts(){
+    let response = await fetch('/getothers');
+    let div = document.createElement('div');
+    let div2 = document.createElement('div');
+
+    div.setAttribute('class', 'accessories');
+    div2.appendChild(div);
+    
+
+    response.json().then((data)=>{
+        for(let i = 0; i<data.length;i++){
+            const otherAccessories = document.createElement('div');
+            otherAccessories.innerHTML = `<div class="accessory">
+                                    <img src="${data[i].product_image}">
+                                    <div class="acc_details">
+                                        <h2>${data[i].product_name}</h2>
+                                        <p>${data[i].description}</p>
+                                        <div class="buttons">
+                                            <button onClick='showAccessoryContainer(event)'>Buy</button>
+                                            <span>Rs ${data[i].price}</span>
+                                        </div>
+                                    </div>
+                                </div>`;
+            div.appendChild(otherAccessories);
+        }
+        const accNav = document.getElementById('other-accessories');
+            accNav.addEventListener('click',()=>{
+                mainSection.innerHTML = div2.innerHTML;
+                moreBtn.style.display = 'none';
+            });
+    })
+}
+getOtherProducts()
+
+//Displaying buy form
+const productImgInput = document.querySelector('#image-input');
+function showContainer(e){
+    buyContainer.style.display = 'block';
+    e = e|| window.Event;
+    productImgInput.value = `${e.currentTarget.parentElement.querySelector('.product_image').attributes.src.value}`;
+
+    const titleInput = document.getElementById('title-text');
+    const title = e.currentTarget.parentElement.querySelector('.product_title').innerText || e.currentTarget.querySelector('.product_title')||e.currentTarget.querySelector('p').querySelector('.product_title');
+    if(title.length>1){
+        titleInput.value = title;
+    }
+
+    const priceInput = document.getElementById('price-input');
+    let price = e.currentTarget.nextSibling.nextSibling.innerText || e.currentTarget.nextSibling.innerText;
+
+    priceInput.value = price;
+    
+    
+    
+}
+function showFeaturedContainer(e){
+    buyContainer.style.display = 'block';
+    e = e|| window.Event;
+    let priceInput = document.getElementById('price-input');
+    let titleInput = document.getElementById('title-text');
+
+    const title = e.currentTarget.querySelector('p').innerText||e.currentTarget.nextSibling.innerText;
+    let price = e.currentTarget.querySelector('p').querySelector('span').innerText;
+    let image = e.currentTarget.querySelector('img').src;
+
+    if(title.length>1){
+        titleInput.value = title;
+    }
+    priceInput.value = price;
+    productImgInput.value = image;
+    
+}
+function showAccessoryContainer(e){
+    buyContainer.style.display = 'block';
+    e = e|| window.Event;
+    let priceInput = document.getElementById('price-input');
+    let titleInput = document.getElementById('title-text');
+
+    const title = e.currentTarget.parentElement.parentElement.querySelector('h2').innerText;
+    let price = e.currentTarget.parentElement.querySelector('span').innerText;
+    let image = e.currentTarget.parentElement.parentElement.parentElement.querySelector('img').src;
+    console.log("title")
+
+    if(title.length>1){
+        titleInput.value = title;
+    }
+    priceInput.value = price;
+    productImgInput.value = image;
+}
+
+
+closeBuy.addEventListener('click', ()=>{
+    buyContainer.style.display = 'none';
+});

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/brands.min.css" integrity="sha512-OivR4OdSsE1onDm/i3J3Hpsm5GmOVvr9r49K3jJ0dnsxVzZgaOJ5MfxEAxCyGrzWozL9uJGKz6un3A7L+redIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="adminstyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.css" integrity="sha512-1hsteeq9xTM5CX6NsXiJu3Y/g+tj+IIwtZMtTisemEv3hx+S9ngaW4nryrNcPM4xGzINcKbwUJtojslX2KG+DQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="./logos/logo.png" type="image/x-icon">
+    <title>MobileHub - Admin Panel</title>
+</head>
+<body>
+    <nav>
+        <a id="home-btn" href="index.html" title="Home"><i class="fa-solid fa-house"></i></a>
+        <div class="admin-buttons">
+            <a id="add-product-nav" >Add Mobile<i style="margin-left: 2px;" class="fa-solid fa-mobile-screen"></i></a>
+            <a id="add-accessory">Add Other Product<i style="margin-left: 2px;" class="fa-solid fa-cart-plus"></i></a>
+            <a id="inbox-btn">Inbox <i style="margin-left: 2px;" class="fa-solid fa-message"></i></a>
+        </div>
+    </nav>
+    <div class="add-other-container">
+        <i class="fa-solid fa-xmark close-container"></i>
+        <form action="/addother" enctype="multipart/form-data" method="POST">
+            <h1 class="add-product-heading">Add New Product</h1>
+            <input type="text" name="title" id="title-input" placeholder="Product Title">
+            <input type="number" name="price" id="price-input" placeholder="Enter Price" step="any">
+            <label for="image-input" id="image-label">
+                Product Image:
+            <input type="file" name="image" id="image-input" >
+            </label>
+            <textarea name="description" class="description" cols="30" rows="10" placeholder="Enter Description"></textarea>
+            <Button id="add-other-btn">Add Product</Button>
+        </form>
+    </div>
+    <div class="add-product-container">
+        <i class="fa-solid fa-xmark close-container"></i>
+        <form action="/addproduct" enctype="multipart/form-data" method="POST">
+            <h1 class="add-product-heading">Add New Product</h1>
+            <input type="text" name="title" id="title-input" placeholder="Product Title">
+            <input type="number" name="price" id="price-input" placeholder="Enter Price" step="any">
+            <label for="image-input" id="image-label">
+                Product Image:
+            <input type="file" name="image" id="image-input" >
+            </label>
+            <textarea name="description" class="description" cols="30" rows="10" placeholder="Enter Description"></textarea>
+            <Button id="add-product-btn">Add Product</Button>
+        </form>
+    </div>
+
+    <div class="inbox">
+        <h1>Inbox</h1>
+        <div class="message">
+            <div class="notif">
+                <!-- <div class="user-image"><i class="fa-solid fa-user"></i></div>
+                <div class="user-name">Full name</div>
+                <div class="subject-text">Subject</div> -->
+            </div>
+
+            <!-- <div class="full-message">
+                <div class="u-name"><span>Name: </span>Full Name</div>
+                <div class="u-email"><span>Email: </span>example@gmail.com</div>
+                <div class="subject"><span>Subject: </span> Subject of message</div>
+                <div class="message-text"><span>Message: </span> Message text</div>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="order-cards">
+            <!-- <div class="card" style="margin-left: 20px;">
+                <h2 class="card-title">Card 1</h2>
+                <div class="bar">
+                    <div class="emptybar"></div>
+                    <div class="filledbar"></div>
+                </div>
+                <div class="details">
+                    <div class="p-name">
+                        <span class="name">Product: </span><span >OnePlus Nord CE 2 5G (Bahamas Blue, 6GB RAM, 128GB Storage)</span>
+                    </div>
+                    <div class="person-name">
+                        <span class="name">Person name: </span><span>Vladimir Putin</span>
+                    </div>
+                    <div class="phone">
+                        <span class="name">Phone: </span><span>6280298413</span>
+                    </div>
+                    <div class="email">
+                        <span class="name">Email: </span><span>putin@vlad.com</span>
+                    </div>
+                    <div class="address">
+                        <span class="name">Address: </span><span>putina street, moscow,russia</span>
+                    </div>
+                    <div class="quantity">
+                        <span class="name">Quantity: </span><span>2</span>
+                    </div>
+                    <div class="bill">
+                        <span class="name">Total Bill: </span><span>price*quantity</span>
+                    </div>
+                </div>
+                <div class="delete"><i class="fa-solid fa-trash-can"></i></div>
+            </div> -->
+
+        </div>
+    </div>
+
+    <script src="./adminScript.js"></script>
+</body>
+</html>

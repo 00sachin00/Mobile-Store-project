@@ -198,7 +198,7 @@ app.post('/newsletter',(req,res)=>{
     res.status(204).send();
 });
 
-const port = process.env.PORT || 5500;
+const port = process.env.PORT;
 
 app.listen(port, ()=>{
     console.log(`Server is running at port 5500. Open your project at: \n\tLocal: http://localhost:5500/ `);

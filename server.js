@@ -19,7 +19,7 @@ const connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     database : 'mobilestore',
-    password : 'mysql',
+    password : '',
     multipleStatements: true
 });
 //connect

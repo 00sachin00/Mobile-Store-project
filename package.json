@@ -3,12 +3,11 @@
   "name": "mobilestore",
   "homepage": "https://mobile-store-demo-project.herokuapp.com/",
   "version": "1.0.0",
-  "description": "",
+  "description": "desc",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
 	"build": "npm run build",
-	"postinstall": "npm run build",
 	"start": "node server.js"
   },
   "author": "",

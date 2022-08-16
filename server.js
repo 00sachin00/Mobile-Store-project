@@ -198,7 +198,7 @@ app.post('/newsletter',(req,res)=>{
     res.status(204).send();
 });
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 5500;
 
 app.listen(port, ()=>{
     console.log(`Server is running`);

@@ -6,4 +6,5 @@ HTML, CSS, JavaScript, Node.js, MySQL
 1. Start MySQL server using wamp,xampp or any other method.
 2. open project directory, and run command "node server".
 
-   Note : AdminPanel Route '/admin'
+ **AdminPanel Route** '/admin'
+You're most welcomed to improve this project and make a push request, let's make this project better and learn more
